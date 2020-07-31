@@ -14,13 +14,18 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
+  palabra = "AGUACATE"; //es la palabra a adivinar
+  palabraOculta = ""; // cantidad de rayitas por cada letra
+
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
     'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
 
 
   constructor() {
-    console.log("Se acaba de crear el App Component");
+
+    this.palabraOculta = "_ ".repeat( this.palabra.length );
+// va a repetir el _ por cada letra que tiene la palabra
   }
 
 }
