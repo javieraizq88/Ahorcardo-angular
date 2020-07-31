@@ -5,8 +5,11 @@ import { Component } from '@angular/core';
 @Component({
 
   selector: 'app-root', 
+  // selector q esta en HTML y cuando se llame, se va a renderizar todo lo q esta en app-root
   templateUrl: './app.component.html', 
-  styleUrls: ['./app.component.css']
+  // cual es el archivo HTML 
+styleUrls: ['./app.component.css'] 
+// agregar estilos personalizados
 })
 
 export class AppComponent {
