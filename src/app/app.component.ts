@@ -19,6 +19,9 @@ export class AppComponent {
 
   intentos = 0;
 
+  gano = false;
+  perdio = false;
+
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
     'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -32,7 +35,7 @@ export class AppComponent {
 
   comprobar(i) {
 
-    this.existeLetra( i );
+    this.existeLetra(i);
 
     // console.log("Letra: " + i); // muestra en console la letra q se hace click
 
@@ -48,19 +51,40 @@ export class AppComponent {
       }
     }
 
+    
     this.palabraOculta = palabraOcultaArr.join(" ");
     // al terminal el for puedo reconstruir el arreglo palabraOcultaArr para crear de nuevo palabraOculta
     // para que solo muestre las letras q la persona ingreso
+    this.verificaGanador();
+    
+    
   }
 
-existeLetra ( i ) {
-  // busca la posicion de la letra, si no esta muestra -1
-  if (this.palabra.indexOf( i ) >= 0 ){
-    console.log("letra " + i  + " existe");
-  } else {
-    console.log("letra " + i + " NO existe");
-    this.intentos ++;
+  verificaGanador() {
+
+    const palabraArr = this.palabraOculta.split(" ");
+    const palabraEvaluar = palabraArr.join("");
+ 
+    if ( palabraEvaluar === this.palabra ) {
+      this.gano = true;
+      console.log("El usuario GANO");
+    } 
+
+    if (this.intentos >= 9 ) {
+      this.perdio = true;
+      console.log("usuario perdió")
+    }
+    
   }
-}
+
+  existeLetra(i) {
+    // busca la posicion de la letra, si no esta muestra -1
+    if (this.palabra.indexOf(i) >= 0) {
+      console.log("letra " + i  + " existe");
+    } else {
+      console.log("letra " + i + " NO existe");
+      this.intentos++;
+    }
+  }
 
 }
