@@ -17,6 +17,8 @@ export class AppComponent {
   palabra = "AGUACATE"; //es la palabra a adivinar
   palabraOculta = ""; // cantidad de rayitas por cada letra
 
+  intentos = 0;
+
   letras = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
     'K', 'L', 'M', 'N', 'Ñ', 'O', 'P', 'Q', 'R', 'S',
     'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
@@ -29,7 +31,10 @@ export class AppComponent {
   }
 
   comprobar(i) {
-    console.log("Letra: " + i); // muestra en console la letra q se hace click
+
+    this.existeLetra( i );
+
+    // console.log("Letra: " + i); // muestra en console la letra q se hace click
 
     const palabraOcultaArr = this.palabraOculta.split(" "); //separa cada letra de la palabra y crea un espacio entre ellas
     // console.log(palabraOcultaArr);
@@ -46,9 +51,16 @@ export class AppComponent {
     this.palabraOculta = palabraOcultaArr.join(" ");
     // al terminal el for puedo reconstruir el arreglo palabraOcultaArr para crear de nuevo palabraOculta
     // para que solo muestre las letras q la persona ingreso
-
-
-
   }
+
+existeLetra ( i ) {
+  // busca la posicion de la letra, si no esta muestra -1
+  if (this.palabra.indexOf( i ) >= 0 ){
+    console.log("letra " + i  + " existe");
+  } else {
+    console.log("letra " + i + " NO existe");
+    this.intentos ++;
+  }
+}
 
 }
