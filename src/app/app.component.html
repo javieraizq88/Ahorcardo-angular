@@ -16,7 +16,25 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="gano">
+  <div class="col text-center">
+
+    <h1> Felicitaciones, ganaste!!!!</h1>
+
+  </div>
+</div>
+
+
+<div class="row" *ngIf="perdio">
+  <div class="col text-center">
+
+    <h1> Lo siento, perdiste :( </h1>
+    <h4>la palabra era: {{ palabra }}</h4>
+
+  </div>
+</div>
+
+<div class="row" *ngIf="!gano && !perdio">
   <div class="col text-center">
 
     <!-- hace un for del arreglo letras -->
